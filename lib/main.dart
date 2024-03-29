@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:openedu/splash_screen.dart';
-import 'color_schemes.g.dart';
+import 'package:openedu/screens/splash_screen.dart';
+import 'constants/color_schemes.g.dart';
 
 void main() {
   runApp(const MyApp());
