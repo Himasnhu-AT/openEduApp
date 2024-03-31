@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:openedu/screens/course_detail_page.dart';
 import 'package:openedu/widgets/course_card.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -10,21 +11,46 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Home Screen'),
       ),
-      body: const Center(
-          child: (Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CourseCard(
-            imagePath: 'assets/images/splashScreen.jpeg',
-            courseName: 'Flutter Course',
-          ),
-          SizedBox(height: 20),
-          CourseCard(
-            imagePath: 'assets/images/splashScreen.jpeg',
-            courseName: 'Dart Course',
-          ),
-        ],
-      ))),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CourseDetailPage(
+                        courseCardId:
+                            'dbms'), // Pass the courseCardId to the CourseDetailPage
+                  ),
+                );
+              },
+              child: const CourseCard(
+                imagePath: 'assets/images/splashScreen.jpeg',
+                courseName: 'DBMS Course',
+              ),
+            ),
+            const SizedBox(height: 20),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CourseDetailPage(
+                        courseCardId:
+                            'javascript'), // Pass the courseCardId to the CourseDetailPage
+                  ),
+                );
+              },
+              child: const CourseCard(
+                imagePath: 'assets/images/splashScreen.jpeg',
+                courseName: 'Javascript Course',
+              ),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
