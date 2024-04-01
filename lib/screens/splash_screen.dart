@@ -2,7 +2,8 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:openedu/constants/color_schemes.g.dart';
-import 'package:openedu/screens/home_screen.dart';
+// import 'package:openedu/screens/home_screen.dart';
+import 'package:openedu/screens/welcome/welcome_screen_1.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -39,6 +40,6 @@ class SplashScreen extends StatelessWidget {
         splashTransition: SplashTransition.fadeTransition,
         duration: 4000,
         splashIconSize: 500,
-        nextScreen: const HomeScreen());
+        nextScreen: const WelcomeScreen1());
   }
 }
