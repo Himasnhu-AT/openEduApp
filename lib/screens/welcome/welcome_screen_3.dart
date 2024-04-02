@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:openedu/constants/color_schemes.g.dart';
 import 'package:openedu/screens/home_screen.dart';
 
 class WelcomeScreen3 extends StatelessWidget {
@@ -11,15 +13,36 @@ class WelcomeScreen3 extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           const Spacer(),
-          Image.asset(
-            'assets/images/splashScreen.jpeg',
+          Center(
+            child: SizedBox(
+              width: 300,
+              height: 300,
+              // child: LottieBuilder.asset("assets/anim/GetStarted.json"),
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                child: LottieBuilder.asset("assets/anim/GetStarted3.json"),
+              ),
+            ),
           ),
           const SizedBox(height: 16),
           const Text(
-            'This is Page 3!',
+            'Get Started!',
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            child: Text(
+              'So, what are you waiting for? Get started with openEdu and start learning today!',
+              style: TextStyle(
+                fontSize: 24,
+                color: lightColorScheme.primary,
+                fontWeight: FontWeight.w600,
+              ),
+              textAlign: TextAlign.justify, // Set text alignment to justify
             ),
           ),
           const SizedBox(height: 16),
@@ -33,7 +56,13 @@ class WelcomeScreen3 extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
               },
-              child: const Text('Get Started'),
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'SignUP',
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
             ),
           ),
         ],
