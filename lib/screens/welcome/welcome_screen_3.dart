@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:openedu/constants/color_schemes.g.dart';
-import 'package:openedu/screens/home_screen.dart';
+import 'package:openedu/screens/auth/sign_in_screen.dart';
+import 'package:openedu/screens/auth/sign_up_screen.dart';
 
 class WelcomeScreen3 extends StatelessWidget {
   const WelcomeScreen3({super.key});
@@ -53,13 +54,32 @@ class WelcomeScreen3 extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const SignUpScreen()),
                 );
               },
               child: const Padding(
                 padding: EdgeInsets.all(8.0),
                 child: Text(
-                  'SignUP',
+                  'Sign UP',
+                  style: TextStyle(fontSize: 24),
+                ),
+              ),
+            ),
+          ),
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 16).copyWith(bottom: 40),
+            child: ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const SignInScreen()),
+                );
+              },
+              child: const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: Text(
+                  'Sign IN',
                   style: TextStyle(fontSize: 24),
                 ),
               ),
