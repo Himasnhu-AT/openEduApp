@@ -63,6 +63,11 @@ class _SignInScreenState extends State<SignInScreen> {
             ElevatedButton(
               onPressed: () {
                 // TODO: Implement login/signup logic
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  (route) => false,
+                );
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const HomeScreen()),
