@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class CourseCard extends StatelessWidget {
+class CourseCard extends StatefulWidget {
   final String imagePath;
   final String courseName;
 
@@ -11,6 +11,11 @@ class CourseCard extends StatelessWidget {
   });
 
   @override
+  State<CourseCard> createState() => _CourseCardState();
+}
+
+class _CourseCardState extends State<CourseCard> {
+  @override
   Widget build(BuildContext context) {
     return Container(
       width: 200,
@@ -18,7 +23,7 @@ class CourseCard extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         image: DecorationImage(
-          image: AssetImage(imagePath),
+          image: AssetImage(widget.imagePath),
           fit: BoxFit.cover,
         ),
       ),
@@ -29,7 +34,7 @@ class CourseCard extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              courseName,
+              widget.courseName,
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 18,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:openedu/screens/auth/sign_up_screen.dart';
+import 'package:openedu/screens/auth/verify_email.dart';
 import 'package:openedu/screens/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -11,13 +12,22 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  bool _obscureText = true;
+  final TextEditingController emailController = TextEditingController();
+  // bool _obscureText = true;
+  String userEmail = '';
   bool _wrongCredentials = false;
 
-  void _togglePasswordVisibility() {
-    setState(() {
-      _obscureText = !_obscureText;
-    });
+  // void _togglePasswordVisibility() {
+  //   setState(() {
+  //     _obscureText = !_obscureText;
+  //   });
+  // }
+
+  void checkEmail() {
+    if (emailController.text.isEmpty) {
+    } else {
+      userEmail = emailController.text;
+    }
   }
 
   @override
@@ -38,20 +48,20 @@ class _SignInScreenState extends State<SignInScreen> {
                 prefixIcon: Icon(Icons.email),
               ),
             ),
-            const SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: GestureDetector(
-                  onTap: _togglePasswordVisibility,
-                  child: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
-                  ),
-                ),
-              ),
-              obscureText: _obscureText,
-            ),
+            // const SizedBox(height: 16),
+            // TextField(
+            //   decoration: InputDecoration(
+            //     labelText: 'Password',
+            //     prefixIcon: Icon(Icons.lock),
+            //     suffixIcon: GestureDetector(
+            //       onTap: _togglePasswordVisibility,
+            //       child: Icon(
+            //         _obscureText ? Icons.visibility : Icons.visibility_off,
+            //       ),
+            //     ),
+            //   ),
+            //   obscureText: _obscureText,
+            // ),
             const SizedBox(
               height: 8,
             ),
@@ -63,14 +73,13 @@ class _SignInScreenState extends State<SignInScreen> {
             ElevatedButton(
               onPressed: () {
                 // TODO: Implement login/signup logic
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  (route) => false,
-                );
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => VerifyEmail(
+                      userEmail: userEmail,
+                    ),
+                  ),
                 );
               },
               child: const Text('Login'),

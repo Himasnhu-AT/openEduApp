@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:openedu/screens/auth/sign_in_screen.dart';
-import 'package:openedu/screens/home_screen.dart';
+import 'package:openedu/screens/auth/verify_email.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -14,12 +12,26 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-    bool _obscureText = true;
+    final TextEditingController emailController = TextEditingController();
+    // bool _obscureText = true;
+    String userEmail = '';
 
-    void _togglePasswordVisibility() {
-      setState(() {
-        _obscureText = !_obscureText;
-      });
+    // void _togglePasswordVisibility() {
+    //   setState(() {
+    //     _obscureText = !_obscureText;
+    //   });
+    // }
+
+    // bool isValidEmail(String email) {
+    //   final RegExp regex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    //   return regex.hasMatch(email);
+    // }
+
+    void checkEmail() {
+      if (emailController.text.isEmpty) {
+      } else {
+        userEmail = emailController.text;
+      }
     }
 
     return Scaffold(
@@ -45,51 +57,50 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
             const SizedBox(height: 16),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              controller: emailController,
+              decoration: const InputDecoration(
                 prefixIcon: Icon(Icons.email),
                 labelText: 'Email',
               ),
             ),
-            const SizedBox(height: 16),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Password',
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: GestureDetector(
-                  onTap: _togglePasswordVisibility,
-                  child: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
-                  ),
-                ),
-              ),
-              obscureText: _obscureText,
-            ),
-            TextField(
-              decoration: InputDecoration(
-                labelText: 'Confirm Password',
-                prefixIcon: Icon(Icons.lock),
-                suffixIcon: GestureDetector(
-                  onTap: _togglePasswordVisibility,
-                  child: Icon(
-                    _obscureText ? Icons.visibility : Icons.visibility_off,
-                  ),
-                ),
-              ),
-              obscureText: _obscureText,
-            ),
+            // const SizedBox(height: 16),
+            // TextField(
+            //   decoration: InputDecoration(
+            //     labelText: 'Password',
+            //     prefixIcon: Icon(Icons.lock),
+            //     suffixIcon: GestureDetector(
+            //       onTap: _togglePasswordVisibility,
+            //       child: Icon(
+            //         _obscureText ? Icons.visibility : Icons.visibility_off,
+            //       ),
+            //     ),
+            //   ),
+            //   obscureText: _obscureText,
+            // ),
+            // TextField(
+            //   decoration: InputDecoration(
+            //     labelText: 'Confirm Password',
+            //     prefixIcon: Icon(Icons.lock),
+            //     suffixIcon: GestureDetector(
+            //       onTap: _togglePasswordVisibility,
+            //       child: Icon(
+            //         _obscureText ? Icons.visibility : Icons.visibility_off,
+            //       ),
+            //     ),
+            //   ),
+            //   obscureText: _obscureText,
+            // ),
             const SizedBox(height: 16),
             ElevatedButton(
               onPressed: () {
+                checkEmail();
                 // TODO: Implement signup logic
-                Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
-                  (route) => false,
-                );
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()),
+                  MaterialPageRoute(
+                    builder: (context) => VerifyEmail(userEmail: userEmail),
+                  ),
                 );
               },
               child: const Text('Signup'),

@@ -1,16 +1,49 @@
 import 'package:flutter/material.dart';
+import 'package:openedu/widgets/topic_card.dart';
 
-class CourseDetailPage extends StatelessWidget {
+class CourseDetailPage extends StatefulWidget {
   final String courseCardId;
 
   const CourseDetailPage({super.key, required this.courseCardId});
 
   @override
+  State<CourseDetailPage> createState() => _CourseDetailPageState();
+}
+
+class _CourseDetailPageState extends State<CourseDetailPage> {
+  @override
   Widget build(BuildContext context) {
+    var topicCards = [
+      {
+        'imageURL': 'assets/images/splashScreen.jpeg',
+        'name': 'Introduction to Flutter',
+        'noOfModules': 10,
+        'progressCheck': 5,
+      },
+      {
+        'name': 'Dart Programming',
+        'imageURL': 'assets/images/splashScreen.jpeg',
+        'noOfModules': 5,
+        'progressCheck': 2,
+      },
+      {
+        'name': 'State Management',
+        'imageURL': 'assets/images/splashScreen.jpeg',
+        'noOfModules': 8,
+        'progressCheck': 3,
+      },
+      {
+        'name': 'Firebase Integration',
+        'imageURL': 'assets/images/splashScreen.jpeg',
+        'noOfModules': 6,
+        'progressCheck': 1,
+      },
+    ];
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          ' ${courseCardId.toUpperCase()}',
+          '${widget.courseCardId.toUpperCase()}',
           style: const TextStyle(
             fontWeight: FontWeight.bold,
           ),
@@ -22,7 +55,7 @@ class CourseDetailPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: Text(
-                'Topics related to $courseCardId will be displayed here.',
+                'Topics related to ${widget.courseCardId} will be displayed here.',
                 style:
                     const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
@@ -32,26 +65,15 @@ class CourseDetailPage extends StatelessWidget {
               child: Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                child: GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 10,
-                    mainAxisSpacing: 10,
-                  ),
-                  itemCount: 10, // Replace with the actual number of topics
+                child: ListView.builder(
+                  itemCount: topicCards.length,
                   itemBuilder: (context, index) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(999),
-                        color: Colors.blue,
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Topic ${index + 1}',
-                          style: const TextStyle(
-                              fontSize: 16, color: Colors.white),
-                        ),
-                      ),
+                    return TopicCardWidget(
+                      imagePath: topicCards[index]['imageURL'].toString(),
+                      topicName: topicCards[index]['name'].toString(),
+                      noOfModules: topicCards[index]['noOfModules'].toString(),
+                      progressCheck:
+                          topicCards[index]['progressCheck'].toString(),
                     );
                   },
                 ),
