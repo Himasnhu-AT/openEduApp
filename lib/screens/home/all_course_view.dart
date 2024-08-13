@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:openedu/screens/course_detail_page.dart';
 import 'package:openedu/widgets/course_card.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class AllCourseScreenView extends StatefulWidget {
+  const AllCourseScreenView({super.key});
 
+  @override
+  State<AllCourseScreenView> createState() => _AllCourseScreenViewState();
+}
+
+class _AllCourseScreenViewState extends State<AllCourseScreenView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home Screen'),
-      ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

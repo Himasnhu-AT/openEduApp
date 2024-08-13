@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:openedu/screens/home_screen.dart';
+import 'package:openedu/screens/home/home_screen.dart';
 
 class VerifyEmail extends StatefulWidget {
   final String userEmail;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:openedu/screens/auth/sign_up_screen.dart';
 import 'package:openedu/screens/auth/verify_email.dart';
-import 'package:openedu/screens/home_screen.dart';
+import 'package:openedu/screens/home/home_screen.dart';
 
 class SignInScreen extends StatefulWidget {
   const SignInScreen({Key? key}) : super(key: key);
